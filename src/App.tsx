@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { GameProvider } from "./context/GameContext"
 import { NotFoundPage } from "./components/404";
 import { HomePage } from "./components/HomePage";
 import { GamePage } from "./components/GamePage";
 import { HistoryPage } from "./components/HistoryPage";
 import { MainLayout } from "./layouts/MainLayout";
+import { GameProvider } from "./context/GameContextProvider";
 
 function App() {
   return (
