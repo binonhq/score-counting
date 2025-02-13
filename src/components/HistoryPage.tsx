@@ -25,14 +25,14 @@ export const HistoryPage = () => {
     <>
       <div className="flex justify-between items-center w-full gap-2">
         <Button onClick={backHome} variant="secondary" className="h-fit w-26">
-          <ChevronLeft />
+          <ChevronLeft className="!w-6 !h-6"/>
         </Button>
         <h1 className="text-2xl font-bold uppercase">History</h1>
       </div>
       <div className="text-black space-y-2 mt-2 overflow-y-auto h-full">
         {
-          listGames.map((game) => (
-            <div className="flex gap-2 items-center">
+          listGames.map((game, index) => (
+            <div key={index} className="flex gap-2 items-center">
               <div onClick={() => goToGame(game.id)} key={game.id} className="grow bg-primary px-4 p-2 flex justify-between items-center">
                 <h2>{game.name}</h2>
                 <p>{dateFormat(new Date(game.createdAt))}</p>

@@ -119,11 +119,6 @@ export const GamePage = () => {
   }, [currentGame.pointDirection]);
 
   useEffect(() => {
-    console.log(players);
-  }
-  , [players]);
-
-  useEffect(() => {
     const checkOverflow = () => {
       const element = containerRef.current;
       if (element) {
@@ -164,7 +159,7 @@ export const GamePage = () => {
     <div className="w-full flex flex-col h-full items-center relative">
       <div className="w-full flex items-center justify-between gap-2 p-1">
         <Button onClick={backHome} variant="secondary" className="h-fit w-26">
-          <ChevronLeft />
+          <ChevronLeft className="!w-6 !h-6"/>
         </Button>
         <div className="flex gap-1 w-full max-w-1/2 items-center justify-end">
           <Input className="border-0 w-full font-semibold text-right" placeholder="Game name..."
@@ -185,24 +180,18 @@ export const GamePage = () => {
             isVertical ? "h-fit grid-cols-2 w-full" : "h-full w-22 grid-rows-2"
           )}>
           <motion.button whileTap={{ scale: 0.95 }} >
-            <div onClick={() => setisShowPlayerSetting(true)} className="text-black bg-primary flex items-center justify-center w-full h-full">
+            <div onClick={() => setisShowPlayerSetting(true)} className="text-black bg-primary flex items-center justify-center w-full h-full py-2">
               <UserRoundPlus className="!w-8 !h-8" />
             </div>
           </motion.button>
 
           <motion.button whileTap={{ scale: 0.95 }} >
-            <div onClick={() => setIsConfirmingReset(true)} className="text-black w-full h-full flex items-center justify-center bg-primary">
+            <div onClick={() => setIsConfirmingReset(true)} className="text-black w-full h-full flex items-center justify-center bg-primary py-2">
               <RotateCcw className="!w-8 !h-8" />
             </div>
           </motion.button>
         </div>
-        {
-          players.map((player) => (
-            <>
-              {player.name} - 
-            </>
-          ))
-        }
+
         <div
           ref={containerRef}
           className={`flex flex-col grow overflow-y-auto overflow-x-hidden gap-1 ${!isOverflowing ? 'justify-center' : ''}`}
@@ -233,7 +222,7 @@ export const GamePage = () => {
             isVertical ? "h-fit grid-cols-2 w-full" : "h-full w-22 grid-rows-2"
           )}>
           <motion.button whileTap={{ scale: 0.95 }} >
-            <div onClick={toggleDirection} className="text-black font-semibold bg-primary flex items-center justify-center w-full h-full text-2xl">
+            <div onClick={toggleDirection} className="text-black font-semibold bg-primary flex items-center justify-center w-full h-full text-2xl py-2">
               {
                 currentGame.pointDirection === "up" ? '123' : '321'
               }
@@ -241,7 +230,7 @@ export const GamePage = () => {
           </motion.button>
 
           <motion.button whileTap={{ scale: 0.95 }} >
-            <div onClick={toggleMute} className="w-full text-black bg-primary h-full flex items-center justify-center">
+            <div onClick={toggleMute} className="w-full text-black bg-primary h-full flex items-center justify-center py-2">
               {
                 currentGame.isMuted ? <VolumeX className="!w-8 !h-8" /> : <Volume2 className="!w-8 !h-8" />
               }
