@@ -1,13 +1,9 @@
 {
-    "headers": [
+    "routes": [
         {
-            "source": "/(.*)",
-            "headers": [
-                {
-                    "key": "Permissions-Policy",
-                    "value": "geolocation=(), microphone=()"
-                }
-            ]
+            "src": "/[^.]+",
+            "dest": "/",
+            "status": 200
         }
     ]
 }
