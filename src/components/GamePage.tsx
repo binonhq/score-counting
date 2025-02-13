@@ -87,8 +87,7 @@ export const GamePage = () => {
         return player;
       });
 
-      sortUsers(updatedPlayers);
-      return updatedPlayers;
+      return sortUsers(updatedPlayers);
     })
   }
 
@@ -110,14 +109,13 @@ export const GamePage = () => {
   }, [players]);
 
   const sortUsers = (players: Player[]) => {
-    const sortedPlayers = [...players].sort(
+    return [...players].sort(
       (a, b) => currentGame.pointDirection === "up" ? a.score - b.score : b.score - a.score
     );
-    setPlayers(sortedPlayers);
   };
 
   useEffect(() => {
-    sortUsers(players);
+    setPlayers(sortUsers(players));
   }, [currentGame.pointDirection]);
 
   useEffect(() => {
