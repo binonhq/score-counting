@@ -1,18 +1,9 @@
-import { useScreenOrientation } from "@/hook/useScreenOrientation";
-import { cn } from "@/lib/utils";
 import { Outlet } from "react-router-dom";
 
 export const MainLayout = () => {
-    const { isVertical } = useScreenOrientation();
     return (
-        <div className={
-            cn(
-                "bg-black text-white h-[100dvh] flex flex-col items-center justify-center p-4",
-                {
-                    "px-20": !isVertical,
-                }
-            )
-        }>
+        <div className="bg-black text-white h-[100dvh] flex flex-col items-center justify-center p-4"
+        >
             <div className="grow overflow-hidden w-full">
                 <Outlet />
             </div>
