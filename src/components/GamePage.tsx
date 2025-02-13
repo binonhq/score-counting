@@ -193,7 +193,13 @@ export const GamePage = () => {
             </div>
           </motion.button>
         </div>
-
+        {
+          players.map((player) => (
+            <>
+              {player.name} - 
+            </>
+          ))
+        }
         <div
           ref={containerRef}
           className={`flex flex-col grow overflow-y-auto overflow-x-hidden gap-1 ${!isOverflowing ? 'justify-center' : ''}`}
