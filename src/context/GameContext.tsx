@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { Game, Player } from "../types";
+import { Game, Player } from "@/types";
 
 export type GameContextType = {
     games: Game[];
