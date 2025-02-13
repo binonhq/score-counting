@@ -1,6 +1,6 @@
 import { useGameContext } from "@/context/GameContext";
 import { Game, Player } from "@/types";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "./ui/button";
 import { ChevronLeft, UserRoundPlus, RotateCcw, VolumeX, Volume2, PenLine } from "lucide-react"
 import { Input } from "./ui/input";
@@ -109,16 +109,16 @@ export const GamePage = () => {
     return players.reduce((acc, player) => acc + player.score, 0);
   }, [players]);
 
-  const sortUsers = useCallback((players: Player[]) => {
+  const sortUsers = (players: Player[]) => {
     const sortedPlayers = [...players].sort(
       (a, b) => currentGame.pointDirection === "up" ? a.score - b.score : b.score - a.score
     );
     setPlayers(sortedPlayers);
-  }, [currentGame.pointDirection]);
+  };
 
   useEffect(() => {
     sortUsers(players);
-  }, [currentGame.pointDirection, sortUsers]);
+  }, [currentGame.pointDirection]);
 
   useEffect(() => {
     console.log(players);
