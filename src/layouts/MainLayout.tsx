@@ -7,7 +7,7 @@ export const MainLayout = () => {
     return (
         <div className={
             cn(
-                "bg-black text-white h-screen flex flex-col items-center justify-center p-4",
+                "bg-black text-white h-[100dvh] flex flex-col items-center justify-center p-4",
                 {
                     "px-20": !isVertical,
                 }
