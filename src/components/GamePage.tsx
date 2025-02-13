@@ -158,7 +158,7 @@ export const GamePage = () => {
   }, [games, allPlayers]);
 
   return (
-    <div className="w-full flex flex-col h-full items-center gap-1 relative">
+    <div className="w-full flex flex-col h-full items-center relative">
       <div className="w-full flex items-center justify-between gap-2 p-1">
         <Button onClick={backHome} variant="secondary" className="h-fit w-26">
           <ChevronLeft />
@@ -173,24 +173,24 @@ export const GamePage = () => {
       </div>
 
       <div className={
-        cn("w-full grow overflow-hidden flex gap-2 p-1",
+        cn("w-full grow overflow-hidden flex gap-1 p-1",
           isVertical ? "flex-col" : "flex-row"
         )
       }>
         <div className={
-          cn("grid gap-2",
+          cn("grid gap-1",
             isVertical ? "h-fit grid-cols-2 w-full" : "h-full w-22 grid-rows-2"
           )}>
           <motion.button whileTap={{ scale: 0.95 }} >
-            <Button onClick={() => setisShowPlayerSetting(true)} className="text-black w-full h-full">
+            <div onClick={() => setisShowPlayerSetting(true)} className="text-black bg-primary flex items-center justify-center w-full h-full">
               <UserRoundPlus className="!w-8 !h-8" />
-            </Button>
+            </div>
           </motion.button>
-          
+
           <motion.button whileTap={{ scale: 0.95 }} >
-            <Button onClick={() => setIsConfirmingReset(true)} className="text-black w-full h-full">
+            <div onClick={() => setIsConfirmingReset(true)} className="text-black w-full h-full flex items-center justify-center bg-primary">
               <RotateCcw className="!w-8 !h-8" />
-            </Button>
+            </div>
           </motion.button>
         </div>
 
@@ -220,23 +220,23 @@ export const GamePage = () => {
         </div>
 
         <div className={
-          cn("grid gap-2",
+          cn("grid gap-1",
             isVertical ? "h-fit grid-cols-2 w-full" : "h-full w-22 grid-rows-2"
           )}>
           <motion.button whileTap={{ scale: 0.95 }} >
-            <Button onClick={toggleDirection} className="text-black font-semibold w-full h-full text-2xl">
+            <div onClick={toggleDirection} className="text-black font-semibold bg-primary flex items-center justify-center w-full h-full text-2xl">
               {
                 currentGame.pointDirection === "up" ? '123' : '321'
               }
-            </Button>
+            </div>
           </motion.button>
 
           <motion.button whileTap={{ scale: 0.95 }} >
-            <Button onClick={toggleMute} className="w-full text-black h-full">
+            <div onClick={toggleMute} className="w-full text-black bg-primary h-full flex items-center justify-center">
               {
                 currentGame.isMuted ? <VolumeX className="!w-8 !h-8" /> : <Volume2 className="!w-8 !h-8" />
               }
-            </Button>
+            </div>
           </motion.button>
         </div>
       </div>

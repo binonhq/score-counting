@@ -68,28 +68,28 @@ export const PlayerRow = (props: PlayerProps) => {
                 isVertical ? "flex-col" : "flex-row"
             )}
         >
-            <div onClick={props.onEditPlayer} style={{ backgroundColor: props.player.color }} className="flex grow items-center justify-between h-16 px-4 text-3xl truncate text-black font-bold uppercase">
+            <div onClick={props.onEditPlayer} style={{ backgroundColor: props.player.color }} className="flex grow items-center justify-between h-14 px-4 text-2xl truncate text-black font-bold uppercase">
                 {props.player.name}
             </div>
-            <div className="flex justify-end gap-1 h-16">
-                <div style={{ backgroundColor: props.player.color }} className="flex items-center w-20 px-4 text-3xl text-center min-w-max justify-center text-black font-bold uppercase">
+            <div className="flex justify-end gap-1 h-14">
+                <div style={{ backgroundColor: props.player.color }} className="flex items-center w-16 px-4 text-2xl text-center min-w-max justify-center text-black font-bold uppercase">
                     {scoreContent}
                 </div>
                 <motion.button whileTap={{ scale: 1.2 }} >
-                    <div onClick={() => onChange(1)} style={{ backgroundColor: props.player.color }} className="flex items-center justify-center text-black h-full min-w-16 font-bold uppercase">
-                        <PlusIcon className="hover:cursor-pointer !w-8 !h-8" />
+                    <div onClick={() => onChange(1)} style={{ backgroundColor: props.player.color }} className="flex items-center justify-center text-black h-full min-w-14 font-bold uppercase">
+                        <PlusIcon className="hover:cursor-pointer !w-6 !h-6" />
                     </div>
                 </motion.button>
 
                 <motion.button whileTap={{ scale: 1.2 }} >
-                    <div onClick={() => onChange(-1)} style={{ backgroundColor: props.player.color }} className="flex items-center justify-center h-full text-black min-w-16 font-bold uppercase">
-                        <MinusIcon className="hover:cursor-pointer !w-8 !h-8" />
+                    <div onClick={() => onChange(-1)} style={{ backgroundColor: props.player.color }} className="flex items-center justify-center h-full text-black min-w-14 font-bold uppercase">
+                        <MinusIcon className="hover:cursor-pointer !w-6 !h-6" />
                     </div>
                 </motion.button>
 
                 <motion.button whileTap={{ scale: 1.2 }} >
-                    <div onClick={makeBalance} style={{ backgroundColor: props.player.color }} className="flex items-center justify-center h-full text-black min-w-16 font-bold uppercase">
-                        <SheetIcon className="hover:cursor-pointer !w-8 !h-8" />
+                    <div onClick={makeBalance} style={{ backgroundColor: props.player.color }} className="flex items-center justify-center h-full text-black min-w-14 font-bold uppercase">
+                        <SheetIcon className="hover:cursor-pointer !w-6 !h-6" />
                     </div>
                 </motion.button>
             </div>
