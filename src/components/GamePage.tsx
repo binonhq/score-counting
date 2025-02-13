@@ -121,6 +121,11 @@ export const GamePage = () => {
   }, [currentGame.pointDirection, sortUsers]);
 
   useEffect(() => {
+    console.log(players);
+  }
+  , [players]);
+
+  useEffect(() => {
     const checkOverflow = () => {
       const element = containerRef.current;
       if (element) {
