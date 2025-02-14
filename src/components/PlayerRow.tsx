@@ -10,6 +10,7 @@ interface PlayerProps {
     balance: number;
     updateScore: (playerId: string, score: number) => void;
     onEditPlayer: () => void;
+    onChangingScore: () => void;
 }
 
 export const PlayerRow = (props: PlayerProps) => {
@@ -22,6 +23,7 @@ export const PlayerRow = (props: PlayerProps) => {
     const onChange = (amount: number) => {
         setIsChangingScore(true);
         setChangeAmount(changeAmount + amount);
+        props.onChangingScore()
 
         if (timeOutState) {
             clearTimeout(timeOutState);
@@ -72,7 +74,7 @@ export const PlayerRow = (props: PlayerProps) => {
                 {props.player.name}
             </div>
             <div className="flex justify-end gap-1 h-14">
-                <div style={{ backgroundColor: props.player.color }} className="flex items-center w-16 px-4 text-2xl text-center min-w-max justify-center text-black font-bold uppercase">
+                <div style={{ backgroundColor: props.player.color }} className="flex items-center w-20 px-4 text-2xl text-center min-w-max justify-center text-black font-bold uppercase">
                     {scoreContent}
                 </div>
                 <motion.button whileTap={{ scale: 1.2 }} >

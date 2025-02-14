@@ -26,6 +26,7 @@ export const GamePage = () => {
     const [edittingPlayer, setEdittingPlayer] = useState<Player | null>(null);
     const [isOverflowing, setIsOverflowing] = useState(false);
     const [isConfirmingReset, setIsConfirmingReset] = useState(false);
+    const [timeOutSortPlayers, setTimeOutSortPlayers] = useState<NodeJS.Timeout | null>(null);
 
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -62,10 +63,10 @@ export const GamePage = () => {
                 });
 
                 setEdittingPlayer(null);
-                return updatedPlayers;
+                return sortUsers(updatedPlayers);
             }
 
-            return [...prevPlayers, player];
+            return sortUsers([...prevPlayers, player]);
         });
 
         setisShowPlayerSetting(false);
@@ -87,8 +88,18 @@ export const GamePage = () => {
                 return player;
             });
 
-            return sortUsers(updatedPlayers);
+            return updatedPlayers;
         })
+
+        if (timeOutSortPlayers) {
+            clearTimeout(timeOutSortPlayers);
+        }
+
+        const newTimeout = setTimeout(() => {
+            setPlayers((prevPlayers) => sortUsers(prevPlayers));
+        }, 3000);
+
+        setTimeOutSortPlayers(newTimeout);
     }
 
     const onEditPlayer = (player: Player) => {
@@ -102,6 +113,12 @@ export const GamePage = () => {
         });
 
         setIsConfirmingReset(false);
+    }
+
+    const onChangingScore = () => {
+        if (timeOutSortPlayers) {
+            clearTimeout(timeOutSortPlayers);
+        }
     }
 
     const balance = useMemo(() => {
@@ -211,7 +228,7 @@ export const GamePage = () => {
                                     opacity: { duration: 0.2 },
                                 }}
                             >
-                                <PlayerRow balance={balance} player={player} updateScore={updateScore} onEditPlayer={() => onEditPlayer(player)} />
+                                <PlayerRow balance={balance} player={player} updateScore={updateScore} onChangingScore={onChangingScore} onEditPlayer={() => onEditPlayer(player)} />
                             </motion.div>
                         ))}
                     </AnimatePresence>
